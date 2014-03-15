@@ -18,7 +18,13 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @lists = @board.lists
+
+    @lists= List.where(:board_id => @board).includes(:cards)
+
+    @cards = []
+    @lists.each{ |list| @cards.concat(list.cards.all) }
+
+    @cards.flatten
 
     render "boards/show"
   end
