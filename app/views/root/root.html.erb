@@ -14,3 +14,7 @@
 	>
 	<input id="logout" type="submit" value="Log Out">
 </form>
+
+<script>
+  $(Trellino.initialize(<%= @user_boards.to_json.html_safe %>))
+</script>

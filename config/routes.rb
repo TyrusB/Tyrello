@@ -8,5 +8,5 @@ Trellino::Application.routes.draw do
   resources :card_assignments, only: :destroy
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :destroy]
-  root to: 'boards#index'
+  root to: 'root#root'
 end
