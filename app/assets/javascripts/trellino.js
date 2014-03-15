@@ -51,7 +51,8 @@ Backbone.CompositeView = Backbone.View.extend({
     this.subviews().push(subview)
 
     // have to actually add to the dom
-    this.$subEl.append(subview.$el)
+    $container = $(this.subSelector);
+    $container.append(subview.$el)
   },
 
   removeSubview: function(subview) {
@@ -69,8 +70,11 @@ Backbone.CompositeView = Backbone.View.extend({
   },
 
   renderSubviews: function() {
-    _(this.subviews()).each(function() {
-      this.$subEl.append(subview.$el);
+    var mainView = this;
+
+    _.each(this.subviews(), function(subview) {
+      $container = $(mainView.subSelector);
+      $container.append(subview.$el);
     })
   },
 
