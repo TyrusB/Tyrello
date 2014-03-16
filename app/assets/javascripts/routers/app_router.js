@@ -3,7 +3,6 @@ window.Trellino.Routers.AppRouter = Backbone.Router.extend({
     this.$rootEl = options.$rootEl
     //Bootstrapped data comes with both cards and lists
     this.boards = options.bootstrapped;
-    console.log(this.boards)
   },
 
   routes: {

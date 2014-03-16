@@ -23,8 +23,10 @@ class BoardsController < ApplicationController
 
     @cards = []
     @lists.each{ |list| @cards.concat(list.cards.all) }
-
     @cards.flatten
+
+    @members = @board.members
+
 
     render "boards/show"
   end

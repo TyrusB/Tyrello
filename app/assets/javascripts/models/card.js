@@ -1,3 +1,3 @@
-window.Trellino.Models.List = Backbone.Model.extend({
+window.Trellino.Models.Card = Backbone.Model.extend({
 
 })
