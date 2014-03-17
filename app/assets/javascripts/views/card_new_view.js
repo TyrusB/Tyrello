@@ -22,7 +22,7 @@ window.Trellino.Views.CardNewView = Backbone.View.extend({
 
     var title = $('#card-title').val();
     
-    var card = new Trellino.Models.List({
+    var card = new Trellino.Models.Card({
       title: title,
       list: this.collection.list
     });

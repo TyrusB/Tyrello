@@ -39,6 +39,8 @@ window.Trellino.Views.ListNewView = Backbone.View.extend({
   },
 
   cancel: function() {
+    // try to avoid if possible
+    // call event on collection
     this.parent.newListToggle();
   }
 })

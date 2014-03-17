@@ -6,7 +6,7 @@ window.Trellino.Models.List = Backbone.Model.extend({
   },
 
   urlRoot: function() { 
-    this.board.url() + "/lists"
+    return this.board.url() + "/lists"
   },
 
   cards: function() {
