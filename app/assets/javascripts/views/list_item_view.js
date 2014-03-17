@@ -3,6 +3,11 @@ window.Trellino.Views.ListItemView = Backbone.CompositeView.extend({
 
   tagName: "li",
 
+  events: {
+    // need to make this id-specific
+    "click button":"newCardToggle",
+  },
+
   render: function() {
     var content = this.template({
       list: this.model
@@ -29,11 +34,28 @@ window.Trellino.Views.ListItemView = Backbone.CompositeView.extend({
       model: card
     })
 
-    this.addSubview(cardView);
+    this.addSubview('#cards-container-' + this.model.get('id'), cardView);
     cardView.render();
-  }
+  },
 
+  newCardToggle: function() {
+    $container = $('#new-card-container-' + this.model.get('id'))
 
-  // Make an addCard function
+    if ($container.children().length == 0) {
+      var newCardForm = new Trellino.Views.CardNewView({
+        //still needs work figuring out what info to pass to make saving work
+        parent: this,
+        collection: this.model.cards()
+      });
+
+      $container.html(newCardForm.render().$el);
+
+      $("#new-card-button-" + this.model.get('id')).toggle();
+
+    } else {
+      $('#new-card-container-' + this.model.get('id')).toggle();
+      $('#new-card-button-' + this.model.get('id')).toggle();
+    }
+  },
 
 })

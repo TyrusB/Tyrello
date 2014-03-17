@@ -1,15 +1,13 @@
-window.Trellino.Views.ListNewView = Backbone.View.extend({
-  tagName: 'form',
-
-  template: JST["lists/new"],
+window.Trellino.Views.CardNewView = Backbone.View.extend({
+  template: JST["cards/new"],
 
   initialize: function(options) {
     this.parent = options.parent
   },
 
   events: {
-    "click button#new-list-submit":"submit",
-    "click button#new-list-cancel":"cancel"
+    "click button#new-card-submit":"submit",
+    "click button#new-card-cancel":"cancel"
   },
 
   render: function() {
@@ -22,23 +20,22 @@ window.Trellino.Views.ListNewView = Backbone.View.extend({
   submit: function() {
     var view = this;
 
-    var title = $('#list-title').val();
+    var title = $('#card-title').val();
     
-    var list = new Trellino.Models.List({
+    var card = new Trellino.Models.List({
       title: title,
-      board: this.collection.board
+      list: this.collection.list
     });
     // need to figure out how to set association data
-    list.save({
+    card.save({
       success: function() {
-        view.collection.add(list);
+        view.collection.add(card);
         //make this form dissapear...
-        view.parent.newListToggle();
+        view.parent.newCardToggle();
       }
     });
   },
 
   cancel: function() {
-    this.parent.newListToggle();
-  }
-})
+    this.parent.newCardToggle();
+  }})

@@ -45,18 +45,26 @@ Backbone.View.prototype.leave = function() {
 
 Backbone.CompositeView = Backbone.View.extend({
 
-  // so, render the template before calling this.
-  // need to define a $subEl as well.
-  addSubview: function(subview) {
-    this.subviews().push(subview)
+  // subviews are view objects, but which HAVEN'T been rendered yet. 
+  // BUT the rendering happens right after this method call.
+  addSubview: function(selector,subview) {
+    // HAVE to use [] selectors here
+    var selectorSubviews = 
+      this.subviews()[selector] || (this.subviews()[selector] = []);
+    
+    selectorSubviews.push(subview);
 
-    // have to actually add to the dom
-    $container = $(this.subSelector);
-    $container.append(subview.$el)
+    // have to actually add to the dom 
+    // once again, this element doesn't have content yet.
+    var $selectorEl = this.$(selector);
+    $selectorEl.append(subview.$el);
+
   },
 
-  removeSubview: function(subview) {
-    this.subviews() = _.without(this.subviews(), subview);
+  removeSubview: function(selector, subview) {
+    // Did this differently from the demo.
+    this.subviews()[selector] =
+      _(this.subviews()[selector]).without(subview);
 
     subview.leave();
   },
@@ -70,17 +78,22 @@ Backbone.CompositeView = Backbone.View.extend({
   },
 
   renderSubviews: function() {
-    var mainView = this;
+    var mainview = this;
 
-    _.each(this.subviews(), function(subview) {
-      $container = $(mainView.subSelector);
-      $container.append(subview.$el);
-    })
+    _.each(mainview.subviews(), function(selectorSubviews, selector) {
+      var $selectorEl = mainview.$(selector)
+      $selectorEl.empty();
+
+      _.each(selectorSubviews, function(subview) {
+        $selectorEl.append(subview.render().$el);
+        subview.delegateEvents();
+      })
+    });
   },
 
   subviews: function() {
     if (!this._subviews) {
-      this._subviews = [];
+      this._subviews = {};
     }
 
     return this._subviews;
