@@ -21,9 +21,8 @@ class BoardsController < ApplicationController
 
     @lists= List.where(:board_id => @board).includes(:cards)
 
-    @cards = []
-    @lists.each{ |list| @cards.concat(list.cards.all) }
-    @cards.flatten
+    @card_lists = {}
+    @lists.each{ |list| @card_lists[list] = list.cards }
 
     @members = @board.members
 
@@ -68,6 +67,6 @@ class BoardsController < ApplicationController
 
   private
   def board_params
-    params.require(:board).permit(:title, :description)
+    params.require(:board).permit(:title, :description, :newMemberEmail)
   end
 end

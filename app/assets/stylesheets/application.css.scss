@@ -1,0 +1,70 @@
+/*
+ *
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require jquery.ui.all
+*/
+
+@import "bootstrap";
+
+body {
+  background-color: lightskyblue;
+}
+
+.placeholder-style {
+  background-color: grey;
+  height: 30px;
+  width: 175px;
+  list-style-type: none;
+  margin: 3px auto;
+}
+
+
+
+
+.list-item {
+  list-style-type: none;
+}
+
+.card {
+  margin: 3px;
+  text-align: center;
+  width: 175px;
+  margin: 3px auto;
+  height: 30px;
+  line-height: 10px;
+  background: lightblue;
+}
+
+.card-text {
+  vertical-align: middle;
+
+}
+
+.list {
+  width: 250px;
+  background-color: whitesmoke;
+
+  margin: 3px;
+  float: left;
+
+}
+
+.new-card-button {
+  margin: 3px auto;
+}
+
+.navbar {
+  background-color: whitesmoke;
+}
+
+//whitespace: no wrap should help it not wrap;

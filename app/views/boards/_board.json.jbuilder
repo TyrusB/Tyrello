@@ -7,7 +7,7 @@ members ||= nil
 
 if !lists.nil?
   json.lists(lists) do |list|
-    json.partial!("lists/list", :list => list, :cards => cards)
+    json.partial!("lists/list", :list => list, :card_lists => card_lists)
   end
 end
 

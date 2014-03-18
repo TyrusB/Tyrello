@@ -21,16 +21,16 @@ window.Trellino.Views.MemberAddView = Backbone.View.extend({
     var view = this;
 
     var email = $('#member-email').val();
-    
+
     var member = new Trellino.Models.Member({
-      email: email,
-      //board: this.collection.board
+      email: email
     });
+    member.collection = this.model.members();
     // need to figure out how to set association data
-    member.save({
+    this.model.save({newMemberEmail: email},{
       success: function() {
-        //view.collection.add(list);
-        //make this form dissapear...
+        member.collection.add(member);
+        $('#member-email').val("");
         view.parent.addMemberToggle();
       }
     });

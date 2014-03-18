@@ -5,7 +5,7 @@ window.Trellino.Models.List = Backbone.Model.extend({
     this.board = options.board
   },
 
-  urlRoot: function() { 
+  urlRoot: function() {
     return this.board.url() + "/lists"
   },
 

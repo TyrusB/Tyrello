@@ -1,11 +1,100 @@
-<h1><%= board.escape('title') %></h1>
+<h2 class='board-name'><%= board.escape('title') %></h2>
 
-<div>Lists</div>
-<ul id='lists-container'></ul>
-<button id='new-list-button'>New List</button>
-<div id='new-list-container'></div>
+<h2>Lists</h2>
+<!-- <div class='row'>
+  <div class='myOuter'>
+  <div class='myDiv' >
+    <div class='myCol col col-xs-3'></div>
+    <div class='myCol col col-xs-3'></div>
+    <div class='myCol col col-xs-3'></div>
+    <div class='myCol col col-xs-3'></div>
+    <div class='myCol col col-xs-3'></div>
+    <div class='myCol col col-xs-3'></div>
+  </div>
+</div>
 
-<div>Members</div>
-<ul id='members-container'></ul>
-<button id='add-member-button'>Add a Member</button>
-<div id='add-member-container'></div>
+</div> -->
+
+
+<div class='row'>
+  <div class='outer-lists-display'>
+    <ul id='lists-container' class='inner-lists-display'></ul>
+  </div>
+</div>
+<div class='row'>
+  <button id='new-list-button'>New List</button>
+</div>
+<div class='row'>
+  <div id='new-list-container'></div>
+</div>
+
+<div class='row'>
+  <div class='members-space col col-xs-4'>
+    <h2>Members</h2>
+    <ul id='members-container' class=''></ul>
+  </div>
+</div>
+<div class='row member-add'>
+  <button id='add-member-button'>Add a Member</button>
+  <div id='add-member-container'></div>
+</div>
+<style>
+
+.outer-lists-display {
+  height: 250px;
+  background: white;
+  border-radius: 5px;
+  margin: 10px;
+  overflow: scroll;
+}
+
+.board-name {
+  text-align:center;
+}
+
+.inner-lists-display {
+  width: 1300px;
+  /*Probably want to set this dynamically*/
+}
+
+.members-space {
+  min-width: 400px;
+  padding-top: 5px;
+  margin-top: 30px;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid blue;
+}
+
+.members-space li {
+  padding: 5px;
+  margin: 5px;
+}
+
+.myDiv {
+  min-width: 1300px;
+}
+
+.member-add {
+  margin-top: 10px;
+}
+
+.myOuter {
+  height: 200px;
+  background: white;
+  border-radius: 5px;
+  margin: 10px;
+  overflow: scroll;
+
+}
+
+.myCol {
+  width: 200px;
+  height: 175px;
+  background: grey;
+  border-radius: 5px;
+  margin: 5px;
+  float:left;
+}
+
+</style>

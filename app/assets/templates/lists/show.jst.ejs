@@ -1,5 +1,35 @@
-<p><%= list.escape('title') %><p>
 
-<ul id='cards-container-<%= list.escape('id') %>'></ul>
-<button id='new-card-button-<%= list.escape('id') %>'>Add a Card</button>
-<div id='new-card-container-<%= list.escape('id') %>'></div>
+<span class='list-title'><%= list.escape('title') %></span>
+<ul id='<%= listId %>' class='list-group ui-sortable sortable-cards'
+  data-list-id='<%= list.id %>'></ul>
+<button class='new-card-button new-card-el'>Add a Card</button>
+<div id='new-card-container-<%= list.escape('id') %>' class='new-card-el'></div>
+
+
+<style>
+.myList {
+  width: 200px;
+  min-height: 175px;
+  background: lightgrey;
+  border-radius: 5px;
+  margin: 5px;
+  float:left;
+  list-style-type: none;
+  text-align: center;
+
+.list-group {
+  list-style-type: none;
+}
+
+.ui-sortable {
+  min-height: 20px;
+}
+
+.new-card-el {
+  margin-top: 10px;
+
+
+
+}
+
+</style>

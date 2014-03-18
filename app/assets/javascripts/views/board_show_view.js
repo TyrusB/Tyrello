@@ -27,8 +27,9 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
     })
 
     this.$el.html(content);
-    //render subviews?
-    //yep, render subviews
+    //add your sortable elements
+    this.$el.find('#lists-container').sortable();
+
     this.renderSubviews();
 
     return this;
@@ -73,7 +74,7 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
       $('#new-list-button').toggle();
     }
   },
-  
+
   addMemberToggle: function() {
     $container = $('#add-member-container')
 
@@ -81,7 +82,7 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
       var addMemberForm = new Trellino.Views.MemberAddView({
         //still needs work figuring out what info to pass to make saving work
         parent: this,
-        collection: this.model.members()
+        model: this.model
       });
 
       $container.html(addMemberForm.render().$el);
@@ -94,3 +95,7 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
     }
   }
 })
+
+//TODO:
+//1. replace current toggle format with one that replaces the html with a rendered form view.
+// 2. Instead of passing parent view, have both success and failure trigger an add event on the collection. Have the board show view rerender on add.

@@ -23,13 +23,16 @@ window.Trellino.Views.ListNewView = Backbone.View.extend({
     var view = this;
 
     var title = $('#list-title').val();
-    
+
     var list = new Trellino.Models.List({
+      //figure out a better way than setting both board and board id
       title: title,
-      board: this.collection.board
+      board_id: this.collection.board.get('id'),
+      board: this.collection.board,
+      rank: "0.0"
     });
-    // need to figure out how to set association data
-    list.save({
+
+    list.save({},{
       success: function() {
         view.collection.add(list);
         //make this form dissapear...
@@ -39,6 +42,7 @@ window.Trellino.Views.ListNewView = Backbone.View.extend({
   },
 
   cancel: function() {
+    //this.collection.trigger("add");
     // try to avoid if possible
     // call event on collection
     this.parent.newListToggle();

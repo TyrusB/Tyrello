@@ -1,20 +1,35 @@
 <div id="content" class="container"></div>
 
+<div class='row' style='padding-top: 30px; padding-left: 20px;'>
 
-<form action="<%= session_url %>" method="POST">
-	<input
-		type="hidden"
-		name="_method"
-		value="DELETE"
-	>
-	<input
-		type="hidden"
-		name="authenticity_token"
-		value="<%= form_authenticity_token %>"
-	>
-	<input id="logout" type="submit" value="Log Out">
-</form>
+  <form action="<%= session_url %>" method="POST">
+  	<input
+  		type="hidden"
+  		name="_method"
+  		value="DELETE"
+  	>
+  	<input
+  		type="hidden"
+  		name="authenticity_token"
+  		value="<%= form_authenticity_token %>"
+  	>
+
+  	<input id="logout" type="submit" value="Log Out" class='btn btn-error'>
+  </form>
+</div>
 
 <script>
   $(Trellino.initialize(<%= @user_boards.to_json.html_safe %>))
 </script>
+
+<style>
+#logout {
+  float: right;
+  margin-right: 25%;
+  position: relative;
+  top: 20%;
+
+
+}
+
+</style>
