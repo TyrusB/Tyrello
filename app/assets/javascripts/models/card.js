@@ -1,7 +1,5 @@
 window.Trellino.Models.Card = Backbone.Model.extend({
-  // urlRoot: function() {
-  //   return "/lists/" + this.list().id + "/cards";
-  // },
+  urlRoot: "/cards",
 
   initialize: function(options) {
     // this.list = options.list

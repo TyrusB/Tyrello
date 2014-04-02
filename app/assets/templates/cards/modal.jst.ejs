@@ -1,0 +1,38 @@
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id='card-modal'>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class='content-container'>
+
+       <h3><%= card.escape('title') %></h3>
+       <div id='description-holder'>
+         <% if ( card.escape("description") ) { %>
+           <%= card.escape("description") %>
+         <% } else { %>
+            <div id='no-description'>No description</div>
+         <% } %>
+       </div>
+
+       <div id='todos-holder'>
+         Todo Items
+         <ul id='todo-holder'>
+           <% card.get('todo_items').forEach( function(todo) { %>
+             <li><%= todo.title %> <input type='checkbox'></li>
+           <% }) %>
+             <li><button id='add-todo'>New Todo</button></li>
+         </ul>
+
+       </div>
+
+       <div id='assigned-users'>
+         Assigned Users
+         <ul id='users-holder'>
+           <% card.get('users').forEach( function(user) { %>
+             <li><%= user.email %> <input type='checkbox'></li>
+           <% }) %>
+            <li><button id='add-todo'>Assign a User</button></li>
+         </ul>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

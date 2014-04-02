@@ -39,6 +39,14 @@ class CardsController < ApplicationController
     render json: @cards
   end
 
+  def show
+    @card = Card.find(params[:id])
+    @todos = @card.todo_items
+    @users = @card.users
+
+    render "cards/member"
+  end
+
   private
   def card_params
     params.require(:card).permit(:title, :description, :rank, :list_id)

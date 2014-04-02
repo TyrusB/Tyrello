@@ -1,0 +1,5 @@
+json.(
+  todo,
+  :title,
+  :id
+)

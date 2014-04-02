@@ -3,7 +3,8 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
 
   events: {
     "click button#new-list-button":"newListToggle",
-    "click button#add-member-button":"addMemberToggle"
+    "click button#add-member-button":"addMemberToggle",
+    "click li.card":"loadModal"
   },
 
   initialize: function() {
@@ -33,6 +34,28 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
     this.renderSubviews();
 
     return this;
+  },
+
+  loadModal: function(event) {
+    var $card = $(event.currentTarget);
+    var cardId = $card.data('id'),
+        listId = $card.data('list-id');
+
+    var card = this.model.lists().get(listId).cards().get(cardId);
+
+    // card.fetch({
+      // success: function(model) {
+        var modalView = new Trellino.Views.CardModalView({
+          model: card
+        })
+
+        this.$('#modal-container').html(modalView.render().$el);
+        $('#card-modal').modal('show');
+      // }
+
+    // });
+
+
   },
 
   addList: function(list) {
