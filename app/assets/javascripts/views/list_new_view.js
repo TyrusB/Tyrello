@@ -31,12 +31,14 @@ window.Trellino.Views.ListNewView = Backbone.View.extend({
       board: this.collection.board,
       rank: "0.0"
     });
+    list.collection = this.collection
 
-    list.save({},{
+    list.save({rank: this.collection.length + 1},{
       success: function() {
         view.collection.add(list);
         //make this form dissapear...
         view.parent.newListToggle();
+        this.$('form')[0].reset();
       }
     });
   },

@@ -19,7 +19,9 @@
 </div>
 
 <script>
-  $(Trellino.initialize(<%= @user_boards.to_json.html_safe %>))
+
+
+  $(Trellino.initialize('<%= @boards_json %>'))
 </script>
 
 <style>

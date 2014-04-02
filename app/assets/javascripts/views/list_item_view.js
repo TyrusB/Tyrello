@@ -11,6 +11,13 @@ window.Trellino.Views.ListItemView = Backbone.CompositeView.extend({
     "sortstop":"updateOrder"
   },
 
+  attributes: function() {
+    return {
+      'data-rank': this.model.get('rank'),
+      'data-id': this.model.id
+    }
+  },
+
   initialize: function() {
     // this.subSelector = '#cards-container-' + this.model.get('id')
     // STill need to make a remove card function

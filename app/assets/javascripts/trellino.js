@@ -5,7 +5,7 @@ window.Trellino = {
   Routers: {},
 
   initialize: function (data) {
-    var boards = new Trellino.Collections.Boards(data);
+    var boards = new Trellino.Collections.Boards( JSON.parse(data) );
 
 
     new Trellino.Routers.AppRouter({
@@ -20,20 +20,20 @@ window.Trellino = {
 }
 
 
-Backbone.Collection.prototype.getOrFetch = function(id) {
+Backbone.Collection.prototype.getOrFetch = function(id, callback) {
 
   var model;
   var boards = this;
 
   if (model = this.get(id)) {
     model.fetch();
-    return model;
+    callback(model);
   } else {
     model = new Trellino.Models.Board({id: id})
     model.fetch({
       success: function() { boards.add(model) }
     })
-    return model;
+    callback(model);
   }
 
 
@@ -45,16 +45,16 @@ Backbone.View.prototype.leave = function() {
 
 Backbone.CompositeView = Backbone.View.extend({
 
-  // subviews are view objects, but which HAVEN'T been rendered yet. 
+  // subviews are view objects, but which HAVEN'T been rendered yet.
   // BUT the rendering happens right after this method call.
   addSubview: function(selector,subview) {
     // HAVE to use [] selectors here
-    var selectorSubviews = 
+    var selectorSubviews =
       this.subviews()[selector] || (this.subviews()[selector] = []);
-    
+
     selectorSubviews.push(subview);
 
-    // have to actually add to the dom 
+    // have to actually add to the dom
     // once again, this element doesn't have content yet.
     var $selectorEl = this.$(selector);
     $selectorEl.append(subview.$el);

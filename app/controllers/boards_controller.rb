@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
 
-    @lists= List.where(:board_id => @board).includes(:cards)
+    @lists = List.where(:board_id => @board).includes(:cards)
 
     @card_lists = {}
     @lists.each{ |list| @card_lists[list] = list.cards }

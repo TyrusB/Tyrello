@@ -27,7 +27,8 @@ window.Trellino.Views.CardNewView = Backbone.View.extend({
     var title = $('#card-title-' + this.collection.list.get('id')).val();
 
     var card = new Trellino.Models.Card({
-      title: title
+      title: title,
+      list_id: this.collection.list.id
     });
     card.collection = this.collection
     // need to figure out how to set association data

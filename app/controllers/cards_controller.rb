@@ -2,7 +2,6 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
-    @card.list = List.find(params[:list_id])
 
     if @card.save
       render json: @card

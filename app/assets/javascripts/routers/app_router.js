@@ -21,13 +21,17 @@ window.Trellino.Routers.AppRouter = Backbone.Router.extend({
   },
 
   boardShow: function(id) {
-    var board = this.boards.getOrFetch(id);
+    var view = this;
 
-    var showView = new Trellino.Views.BoardShowView({
-      model: board
-    })
+    var board = this.boards.getOrFetch(id, function(board) {
+      var showView = new Trellino.Views.BoardShowView({
+        model: board
+      })
 
-    this._swapView(showView)
+      view._swapView(showView)
+
+    });
+
   },
 
 
