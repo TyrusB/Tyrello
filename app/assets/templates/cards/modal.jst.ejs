@@ -15,10 +15,10 @@
        <div id='todos-holder'>
          Todo Items
          <ul id='todo-holder'>
-           <% card.get('todo_items').forEach( function(todo) { %>
+           <% card.todos().each( function(todo) { %>
              <li><%= todo.title %> <input type='checkbox'></li>
            <% }) %>
-             <li><button id='add-todo'>New Todo</button></li>
+             <li><button id='add-todo-button'>New Todo</button><div id='add-todo-container'></div></li>
          </ul>
 
        </div>
@@ -29,7 +29,7 @@
            <% card.get('users').forEach( function(user) { %>
              <li><%= user.email %> <input type='checkbox'></li>
            <% }) %>
-            <li><button id='add-todo'>Assign a User</button></li>
+            <li><button id='add-user-button'>Assign a User</button><div id='add-user-container'></div></li>
          </ul>
        </div>
       </div>

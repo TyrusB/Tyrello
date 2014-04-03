@@ -7,5 +7,26 @@ window.Trellino.Models.Card = Backbone.Model.extend({
 
   list: function () {
     return this.collection.list;
+  },
+
+  todos: function() {
+    if (!this._todos) {
+      this._todos = new Trellino.Collections.CardTodos([],{
+        card: this
+      });
+    }
+
+    return this._todos
+  },
+
+  parse: function(jsonResp) {
+    if (jsonResp.todos) {
+      this.todos().set(jsonResp.todos);
+      delete jsonResp.s;
+    }
+
+    return jsonResp;
   }
+
+
 });

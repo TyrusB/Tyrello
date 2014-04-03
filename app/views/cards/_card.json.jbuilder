@@ -10,7 +10,7 @@ todos ||= nil
 users ||= nil
 
 unless todos.nil?
-  json.todo_items(todos) do |todo|
+  json.todos(todos) do |todo|
     json.partial!("todos/todo", :todo => todo)
   end
 end

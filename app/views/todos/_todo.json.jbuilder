@@ -1,5 +1,6 @@
 json.(
   todo,
   :title,
-  :id
+  :id,
+  :done
 )
