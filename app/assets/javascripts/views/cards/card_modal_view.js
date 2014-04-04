@@ -17,6 +17,12 @@ window.Trellino.Views.CardModalView = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render)
+    this.listenTo(this.model.todos(), 'sync', this.reRenderModal)
+  },
+
+  reRenderModal: function() {
+    this.render();
+    this.$('#card-modal').modal('show');
   },
 
   newTodoToggle: function() {
@@ -24,7 +30,6 @@ window.Trellino.Views.CardModalView = Backbone.View.extend({
 
     if ($container.children().length == 0) {
       var newTodoForm = new Trellino.Views.TodoNewView({
-        card_id: this.model.id,
         collection: this.model.todos(),
         parent: this
       });

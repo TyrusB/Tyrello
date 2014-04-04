@@ -1,9 +1,12 @@
 window.Trellino.Collections.BoardMembers = Backbone.Collection.extend({
-  model: Trellino.Models.Member,
+  model: Trellino.Models.User,
 
-  url: "/users",
+  initialize: function(options) {
+    this.board = options.board;
+  },
 
-  intitialize: function(members, options) {
-    this.board = options.board
+  url: function() {
+    "/boards/" + this.board.id + "/users"
   }
-})
+
+});

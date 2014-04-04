@@ -6,19 +6,20 @@ class ListsController < ApplicationController
     render json: @lists
   end
 
-  def show
-    @list = List.find(params[:list_id])
-    render json: @list
-  end
-
   def create
-    @list = List.new(list_params)
+    @board = Board.find(params[:board_id])
+    @list = @board.lists.build(list_params)
 
     if @list.save
       render json: @list
     else
       render json: { errors: @list.errors.full_messages }, status: 422
     end
+  end
+
+  def show
+    @list = List.find(params[:id])
+    render json: @list
   end
 
   def update
@@ -40,6 +41,6 @@ class ListsController < ApplicationController
 
   private
   def list_params
-    params.require(:list).permit(:title, :rank, :board_id)
+    params.require(:list).permit(:title, :rank)
   end
 end

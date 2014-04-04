@@ -1,9 +1,9 @@
 class TodoItemsController < ApplicationController
 
   def create
-    # @card = Card.find(params[:card_id])
-#     @item = @card.todo_items.build(todo_item_params)
-    @item = TodoItem.new(todo_item_params)
+    @card = Card.find(params[:card_id])
+    @item = @card.todo_items.build(todo_item_params)
+
     if @item.save
       render json: @item
     else
@@ -31,6 +31,6 @@ class TodoItemsController < ApplicationController
 
   private
   def todo_item_params
-    params.require(:todo_item).permit(:title, :card_id, :done)
+    params.require(:todo).permit(:title, :done)
   end
 end

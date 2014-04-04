@@ -45,7 +45,7 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
     })
 
     this.$('#modal-container').html(modalView.render().$el);
-    $('#card-modal').modal('show');
+    this.$('#card-modal').modal('show');
 
   },
 
@@ -71,7 +71,6 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
 
     if ($container.children().length == 0) {
       var newListForm = new Trellino.Views.ListNewView({
-        //still needs work figuring out what info to pass to make saving work
         parent: this,
         collection: this.model.lists()
       });
@@ -107,7 +106,12 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
   },
 
   updateOrder: function(event, ui) {
+    if ( !$(ui.item).hasClass('myList') ) {
+      return;
+    }
+
     var $list = $(ui.item);
+
     var listId = $list.data('id');
 
     var prevRank = $list.prev().data('rank');

@@ -9,7 +9,6 @@ window.Trellino.Views.TodoNewView = Backbone.View.extend({
   },
 
   initialize: function(options) {
-    this.card_id = options.card_id;
     this.parent = options.parent;
   },
 
@@ -23,16 +22,14 @@ window.Trellino.Views.TodoNewView = Backbone.View.extend({
   submit: function() {
     var view = this;
 
-    var name = $('#todo-name').val();
+    var title = $('#todo-name').val();
 
     var todo = new Trellino.Models.Todo({
-      name: name,
-      card_id: this.card_id
+      title: title
     });
-
     todo.collection = this.collection
-    debugger
-    todo.save({},{
+    
+    todo.save({ todo: { "title":title } },{
       success: function() {
         view.collection.add(todo);
         //make this form dissapear...
