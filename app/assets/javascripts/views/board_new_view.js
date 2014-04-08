@@ -1,4 +1,4 @@
-window.Trellino.Views.BoardNewView = Backbone.View.extend({
+window.Tyrello.Views.BoardNewView = Backbone.View.extend({
   template: JST['boards/new'],
 
   initialize: function(options) {
@@ -20,7 +20,7 @@ window.Trellino.Views.BoardNewView = Backbone.View.extend({
   submit: function(event) {
     event.preventDefault();
     var params = $(event.currentTarget).serializeJSON()['board']
-    var board = new Trellino.Models.Board(params);
+    var board = new Tyrello.Models.Board(params);
     var view = this;
 
     board.save({}, {

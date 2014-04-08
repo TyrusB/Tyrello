@@ -1,4 +1,4 @@
-window.Trellino.Views.MemberItemView = Backbone.View.extend({
+window.Tyrello.Views.MemberItemView = Backbone.View.extend({
   tagName: "li",
 
   template: JST["members/show"],

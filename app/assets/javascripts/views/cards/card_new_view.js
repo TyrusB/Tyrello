@@ -1,4 +1,4 @@
-window.Trellino.Views.CardNewView = Backbone.View.extend({
+window.Tyrello.Views.CardNewView = Backbone.View.extend({
   template: JST["cards/new"],
 
   tagName: 'form',
@@ -26,7 +26,7 @@ window.Trellino.Views.CardNewView = Backbone.View.extend({
 
     var title = $('#card-title-' + this.collection.list.get('id')).val();
 
-    var card = new Trellino.Models.Card({
+    var card = new Tyrello.Models.Card({
       title: title,
       list_id: this.collection.list.id
     });

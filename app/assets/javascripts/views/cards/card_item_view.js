@@ -1,4 +1,4 @@
-window.Trellino.Views.CardItemView = Backbone.View.extend({
+window.Tyrello.Views.CardItemView = Backbone.View.extend({
   tagName: "li",
 
   className: "list-group-item card",

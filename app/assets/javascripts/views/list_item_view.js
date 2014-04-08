@@ -1,4 +1,4 @@
-window.Trellino.Views.ListItemView = Backbone.CompositeView.extend({
+window.Tyrello.Views.ListItemView = Backbone.CompositeView.extend({
   template: JST["lists/show"],
 
   className: "myList",
@@ -49,7 +49,7 @@ window.Trellino.Views.ListItemView = Backbone.CompositeView.extend({
   },
 
   addCard: function(card) {
-    var cardView = new Trellino.Views.CardItemView({
+    var cardView = new Tyrello.Views.CardItemView({
       model: card
     })
 
@@ -61,7 +61,7 @@ window.Trellino.Views.ListItemView = Backbone.CompositeView.extend({
     $container = this.$('#new-card-container-' + this.model.id)
 
     if ($container.children().length == 0) {
-      var newCardForm = new Trellino.Views.CardNewView({
+      var newCardForm = new Tyrello.Views.CardNewView({
         //still needs work figuring out what info to pass to make saving work
         parent: this,
         collection: this.model.cards()

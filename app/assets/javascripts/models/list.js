@@ -1,4 +1,4 @@
-window.Trellino.Models.List = Backbone.Model.extend({
+window.Tyrello.Models.List = Backbone.Model.extend({
   // Need to set a url based on board?
   // how to store that?
   initialize: function(options) {
@@ -7,7 +7,7 @@ window.Trellino.Models.List = Backbone.Model.extend({
 
   cards: function() {
     if (!this._cards) {
-      this._cards = new Trellino.Collections.ListCards([], {
+      this._cards = new Tyrello.Collections.ListCards([], {
         list: this
       });
     }

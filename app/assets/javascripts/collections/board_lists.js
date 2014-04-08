@@ -1,5 +1,5 @@
-window.Trellino.Collections.BoardLists = Backbone.Collection.extend({
-  model: Trellino.Models.List,
+window.Tyrello.Collections.BoardLists = Backbone.Collection.extend({
+  model: Tyrello.Models.List,
 
   url: function() {
     return this.board.url() + "/lists";

@@ -1,4 +1,4 @@
-window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
+window.Tyrello.Views.BoardShowView = Backbone.CompositeView.extend({
   template: JST['boards/show'],
 
   events: {
@@ -40,7 +40,7 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
 
     var card = this.model.lists().get(listId).cards().get(cardId);
 
-    var modalView = new Trellino.Views.CardModalView({
+    var modalView = new Tyrello.Views.CardModalView({
       model: card
     })
 
@@ -50,7 +50,7 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
   },
 
   addList: function(list) {
-    var listItemView = new Trellino.Views.ListItemView({
+    var listItemView = new Tyrello.Views.ListItemView({
       model: list
     })
 
@@ -58,7 +58,7 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
   },
 
   addMember: function(member) {
-    var memberView = new Trellino.Views.MemberItemView({
+    var memberView = new Tyrello.Views.MemberItemView({
       model: member
     })
 
@@ -70,7 +70,7 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
     $container = $('#new-list-container')
 
     if ($container.children().length == 0) {
-      var newListForm = new Trellino.Views.ListNewView({
+      var newListForm = new Tyrello.Views.ListNewView({
         //still needs work figuring out what info to pass to make saving work
         parent: this,
         collection: this.model.lists()
@@ -90,7 +90,7 @@ window.Trellino.Views.BoardShowView = Backbone.CompositeView.extend({
     $container = $('#add-member-container')
 
     if ($container.children().length == 0) {
-      var addMemberForm = new Trellino.Views.MemberAddView({
+      var addMemberForm = new Tyrello.Views.MemberAddView({
         //still needs work figuring out what info to pass to make saving work
         parent: this,
         model: this.model

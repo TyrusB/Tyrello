@@ -1,4 +1,4 @@
-window.Trellino.Routers.AppRouter = Backbone.Router.extend({
+window.Tyrello.Routers.AppRouter = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl
     //Bootstrapped data comes with both cards and lists
@@ -11,7 +11,7 @@ window.Trellino.Routers.AppRouter = Backbone.Router.extend({
   },
 
   boardIndex: function() {
-    var indexView = new Trellino.Views.BoardIndexView({
+    var indexView = new Tyrello.Views.BoardIndexView({
       collection: this.boards
     })
 
@@ -24,7 +24,7 @@ window.Trellino.Routers.AppRouter = Backbone.Router.extend({
     var view = this;
 
     var board = this.boards.getOrFetch(id, function(board) {
-      var showView = new Trellino.Views.BoardShowView({
+      var showView = new Tyrello.Views.BoardShowView({
         model: board
       })
 

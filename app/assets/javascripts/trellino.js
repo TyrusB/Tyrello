@@ -1,14 +1,14 @@
-window.Trellino = {
+window.Tyrello = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
 
   initialize: function (data) {
-    var boards = new Trellino.Collections.Boards( JSON.parse(data) );
+    var boards = new Tyrello.Collections.Boards( JSON.parse(data) );
 
 
-    new Trellino.Routers.AppRouter({
+    new Tyrello.Routers.AppRouter({
       bootstrapped: boards,
       $rootEl: $('#content')
      });
@@ -29,7 +29,7 @@ Backbone.Collection.prototype.getOrFetch = function(id, callback) {
     model.fetch();
     callback(model);
   } else {
-    model = new Trellino.Models.Board({id: id})
+    model = new Tyrello.Models.Board({id: id})
     model.fetch({
       success: function() { boards.add(model) }
     })
@@ -103,7 +103,7 @@ Backbone.CompositeView = Backbone.View.extend({
 
 // boards.add(data, {
 //  success: function() {
-//    new Trellino.Routers.AppRouter({
+//    new Tyrello.Routers.AppRouter({
 //      bootstrapped: boards,
 //      $rootEl: $('#content')
 //     });

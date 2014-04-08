@@ -1,5 +1,5 @@
-window.Trellino.Collections.BoardMembers = Backbone.Collection.extend({
-  model: Trellino.Models.Member,
+window.Tyrello.Collections.BoardMembers = Backbone.Collection.extend({
+  model: Tyrello.Models.Member,
 
   url: "/users",
 

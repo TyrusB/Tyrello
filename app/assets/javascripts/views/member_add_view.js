@@ -1,4 +1,4 @@
-window.Trellino.Views.MemberAddView = Backbone.View.extend({
+window.Tyrello.Views.MemberAddView = Backbone.View.extend({
   template: JST['members/add'],
 
   initialize: function(options) {
@@ -22,7 +22,7 @@ window.Trellino.Views.MemberAddView = Backbone.View.extend({
 
     var email = $('#member-email').val();
 
-    var member = new Trellino.Models.Member({
+    var member = new Tyrello.Models.Member({
       email: email
     });
     member.collection = this.model.members();

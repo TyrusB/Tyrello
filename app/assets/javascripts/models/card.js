@@ -1,4 +1,4 @@
-window.Trellino.Models.Card = Backbone.Model.extend({
+window.Tyrello.Models.Card = Backbone.Model.extend({
   urlRoot: "/cards",
 
   initialize: function(options) {
@@ -11,7 +11,7 @@ window.Trellino.Models.Card = Backbone.Model.extend({
 
   todos: function() {
     if (!this._todos) {
-      this._todos = new Trellino.Collections.CardTodos([],{
+      this._todos = new Tyrello.Collections.CardTodos([],{
         card: this
       });
     }
