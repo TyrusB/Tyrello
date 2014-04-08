@@ -1,4 +1,4 @@
-window.Trellino.Views.CardModalView = Backbone.View.extend({
+window.Tyrello.Views.CardModalView = Backbone.View.extend({
   template: JST["cards/modal"],
 
   events: {
@@ -23,7 +23,7 @@ window.Trellino.Views.CardModalView = Backbone.View.extend({
     $container = $('#add-todo-container')
 
     if ($container.children().length == 0) {
-      var newTodoForm = new Trellino.Views.TodoNewView({
+      var newTodoForm = new Tyrello.Views.TodoNewView({
         card_id: this.model.id,
         collection: this.model.todos(),
         parent: this

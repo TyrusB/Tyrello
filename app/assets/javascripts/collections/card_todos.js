@@ -1,5 +1,5 @@
-window.Trellino.Collections.CardTodos = Backbone.Collection.extend({
-  model: Trellino.Models.Todo,
+window.Tyrello.Collections.CardTodos = Backbone.Collection.extend({
+  model: Tyrello.Models.Todo,
 
   url: function() {
     return "/lists/" + this.card.id + "/todo_items"

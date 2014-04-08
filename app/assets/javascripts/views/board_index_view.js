@@ -1,4 +1,4 @@
-window.Trellino.Views.BoardIndexView = Backbone.View.extend({
+window.Tyrello.Views.BoardIndexView = Backbone.View.extend({
   template: JST["boards/index"],
 
   initialize: function() {
@@ -38,7 +38,7 @@ window.Trellino.Views.BoardIndexView = Backbone.View.extend({
   },
 
   renderNewBoardForm: function() {
-    var newBoardView = new Trellino.Views.BoardNewView({
+    var newBoardView = new Tyrello.Views.BoardNewView({
       collection: this.collection,
       indexView: this
     });

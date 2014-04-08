@@ -1,4 +1,4 @@
-window.Trellino.Views.ListNewView = Backbone.View.extend({
+window.Tyrello.Views.ListNewView = Backbone.View.extend({
   tagName: 'form',
 
   template: JST["lists/new"],
@@ -24,7 +24,7 @@ window.Trellino.Views.ListNewView = Backbone.View.extend({
 
     var title = $('#list-title').val();
 
-    var list = new Trellino.Models.List({
+    var list = new Tyrello.Models.List({
       //figure out a better way than setting both board and board id
       title: title,
       board_id: this.collection.board.get('id'),

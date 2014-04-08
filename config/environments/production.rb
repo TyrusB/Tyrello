@@ -1,4 +1,4 @@
-Trellino::Application.configure do
+Tyrello::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

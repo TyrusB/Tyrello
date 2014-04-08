@@ -1,4 +1,4 @@
-Trellino::Application.routes.draw do
+Tyrello::Application.routes.draw do
   resources :boards, only: [:index, :show, :create, :update, :destroy] do
     resources :lists, only: [:index, :show, :create, :update, :destroy]
   end

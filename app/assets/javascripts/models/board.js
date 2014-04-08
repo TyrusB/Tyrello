@@ -1,9 +1,9 @@
-window.Trellino.Models.Board = Backbone.Model.extend({
+window.Tyrello.Models.Board = Backbone.Model.extend({
   urlRoot: "/boards",
 
   lists: function() {
     if (!this._lists) {
-      this._lists = new Trellino.Collections.BoardLists([], {
+      this._lists = new Tyrello.Collections.BoardLists([], {
         board: this
       });
     }
@@ -13,7 +13,7 @@ window.Trellino.Models.Board = Backbone.Model.extend({
 
   members: function() {
     if (!this._members) {
-      this._members = new Trellino.Collections.BoardMembers([], {
+      this._members = new Tyrello.Collections.BoardMembers([], {
         board: this
       });
     }

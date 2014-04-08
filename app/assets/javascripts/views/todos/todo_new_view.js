@@ -1,4 +1,4 @@
-window.Trellino.Views.TodoNewView = Backbone.View.extend({
+window.Tyrello.Views.TodoNewView = Backbone.View.extend({
   template: JST["todos/new"],
 
   tagName: "form",
@@ -25,7 +25,7 @@ window.Trellino.Views.TodoNewView = Backbone.View.extend({
 
     var name = $('#todo-name').val();
 
-    var todo = new Trellino.Models.Todo({
+    var todo = new Tyrello.Models.Todo({
       name: name,
       card_id: this.card_id
     });

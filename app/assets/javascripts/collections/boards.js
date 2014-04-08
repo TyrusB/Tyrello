@@ -1,6 +1,6 @@
-window.Trellino.Collections.Boards = Backbone.Collection.extend({
+window.Tyrello.Collections.Boards = Backbone.Collection.extend({
   url: "/boards",
-  model: Trellino.Models.Board
+  model: Tyrello.Models.Board
 
 //end of class
 })
