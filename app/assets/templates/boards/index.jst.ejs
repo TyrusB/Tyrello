@@ -1,12 +1,14 @@
 <h2>Boards</h2>
 
+<div class='boards-index-container'>
 <% boards.each(function(board) { %>
-  <p>
-    <a href='#/boards/<%= board.escape('id') %>'>
-      <%= board.escape('title') %>
-    </a>
-  </p>
+  <a href='#/boards/<%= board.escape('id') %>'>
+    <p class='boards-item'>
+     <%= board.escape('title') %>
+    </p>
+  </a>
 <% }); %>
+</div>
 
 <div id='new-board-container'>
 </div>

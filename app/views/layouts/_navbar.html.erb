@@ -1,0 +1,22 @@
+<nav class="navbar">
+  <div class="navbar-header">
+    <div class='navbar-brand' href='#'>Tyrello</div>
+  </div>
+
+  <div class='navbar-right'>
+    <form action="<%= session_url %>" method="POST">
+    	<input
+    		type="hidden"
+    		name="_method"
+    		value="DELETE"
+    	>
+    	<input
+    		type="hidden"
+    		name="authenticity_token"
+    		value="<%= form_authenticity_token %>"
+    	>
+
+    	<input id="logout" type="submit" value="Log Out" class='btn btn-error'>
+    </form>
+  </div>
+</nav>

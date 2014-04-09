@@ -1,0 +1,42 @@
+.outer-lists-display {
+  height: 250px;
+  background: white;
+  border-radius: 5px;
+  margin: 10px;
+  overflow: scroll;
+}
+
+.board-name {
+  text-align:center;
+}
+
+.inner-lists-display {
+  width: 1300px;
+  /*Probably want to set this dynamically*/
+}
+
+.members-space {
+  min-width: 400px;
+  padding-top: 5px;
+  margin-top: 30px;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid blue;
+}
+
+.members-space li {
+  padding: 5px;
+  margin: 5px;
+}
+
+.myDiv {
+  min-width: 1300px;
+}
+
+.member-add {
+  margin-top: 10px;
+}
+
+.back-button {
+  margin: 30px 0 30px -10px;
+}

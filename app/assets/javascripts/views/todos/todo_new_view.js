@@ -24,14 +24,14 @@ window.Tyrello.Views.TodoNewView = Backbone.View.extend({
     var view = this;
 
     var name = $('#todo-name').val();
-
+    debugger
     var todo = new Tyrello.Models.Todo({
       name: name,
       card_id: this.card_id
     });
 
     todo.collection = this.collection
-    debugger
+
     todo.save({},{
       success: function() {
         view.collection.add(todo);
