@@ -7,7 +7,9 @@ window.Tyrello.Views.BoardIndexView = Backbone.View.extend({
 
 
   events: {
-    "click #new-board-button":"toggleNewBoardForm"
+    "click #new-board-button":"toggleNewBoardForm",
+    "click .cancel":"toggleNewBoardForm",
+    "submit .new-board-form":"saveBoard"
   },
 
   render: function() {
@@ -20,30 +22,27 @@ window.Tyrello.Views.BoardIndexView = Backbone.View.extend({
     return this;
   },
 
-  toggleNewBoardForm: function() {
-    if ($('#new-board-container').children().length == 0) {
-      this.renderNewBoardForm();
-    } else {
-      $('#new-form').toggle();
-    }
+  toggleNewBoardForm: function(event) {
+    event.preventDefault();
 
-    //this.listenTo(newBoardView, 'remove', this.render)
-    var $newBoardButton = $('#new-board-button');
-    if ($newBoardButton.text() === "Create a new Board") {
-      $newBoardButton.text("Nevermind!");
-    } else {
-      $newBoardButton.text("Create a new Board");
-    }
+    $('#new-board-button').toggle();
+    $('#new-board-container').toggle();
 
   },
 
-  renderNewBoardForm: function() {
-    var newBoardView = new Tyrello.Views.BoardNewView({
-      collection: this.collection,
-      indexView: this
-    });
+  saveBoard: function(event) {
+    event.preventDefault();
+    var params = $(event.currentTarget).serializeJSON()['board']
+    var board = new Tyrello.Models.Board(params);
+    var view = this;
+    board.collection = this.collection;
 
-    $('#new-board-container').html(newBoardView.render().$el);
+    board.save({}, {
+      success: function() {
+        view.collection.add(board);
+        view.toggleNewBoardForm(event);
+      }
+    })
   }
 
 })

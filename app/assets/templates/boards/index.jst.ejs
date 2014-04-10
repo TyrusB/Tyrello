@@ -10,6 +10,10 @@
 <% }); %>
 </div>
 
-<div id='new-board-container'>
+<div id='new-board-container' hidden>
+  <form class='new-board-form'>
+    <input type='text' name='board[title]'>
+    <input type='submit' value='Create'> <button class='cancel'>X</button>
+  </form>
 </div>
 <button id='new-board-button'>Create a new Board</button>
