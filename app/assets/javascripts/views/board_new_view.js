@@ -23,6 +23,7 @@ window.Tyrello.Views.BoardNewView = Backbone.View.extend({
     var params = $(event.currentTarget).serializeJSON()['board']
     var board = new Tyrello.Models.Board(params);
     var view = this;
+    board.collection = this.collection;
 
     board.save({}, {
       success: function() {

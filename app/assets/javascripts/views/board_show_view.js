@@ -14,8 +14,10 @@ window.Tyrello.Views.BoardShowView = Backbone.CompositeView.extend({
     this.listenTo(this.model.lists(), 'add', this.addList)
     this.listenTo(this.model.members(), 'add', this.addMember)
 
-    this.model.lists().each(this.addList.bind(this));
-    this.model.members().each(this.addMember.bind(this));
+    //Note: in normal operations, the functions below are unnecessary (the collections start off empty)
+    // But it allows for navigating back and forward, from the page, away, and then back again.
+    this.addAll(this.model.lists(), this.addList.bind(this) )
+    this.addAll(this.model.members(), this.addMember.bind(this) )
 
   },
 
@@ -49,12 +51,18 @@ window.Tyrello.Views.BoardShowView = Backbone.CompositeView.extend({
 
   },
 
+  addAll: function(collection, addFunction) {
+    collection.each(addFunction);
+  },
+
   addList: function(list) {
     var listItemView = new Tyrello.Views.ListItemView({
       model: list
     })
 
     this.addSubview('#lists-container', listItemView);
+    
+    listItemView.render();
   },
 
   addMember: function(member) {
@@ -63,6 +71,8 @@ window.Tyrello.Views.BoardShowView = Backbone.CompositeView.extend({
     })
 
     this.addSubview('#members-container', memberView);
+
+    memberView.render();
 
   },
 

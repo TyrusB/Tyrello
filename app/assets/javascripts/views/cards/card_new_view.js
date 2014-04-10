@@ -26,14 +26,8 @@ window.Tyrello.Views.CardNewView = Backbone.View.extend({
 
     var title = $('#card-title-' + this.collection.list.get('id')).val();
 
-<<<<<<< HEAD
     var card = new Tyrello.Models.Card({
       title: title,
-      list_id: this.collection.list.id
-=======
-    var card = new Trellino.Models.Card({
-      title: title
->>>>>>> master
     });
     card.collection = this.collection
     // need to figure out how to set association data
@@ -52,3 +46,5 @@ window.Tyrello.Views.CardNewView = Backbone.View.extend({
     this.parent.newCardToggle();
   }})
 
+
+// Issue: card creation shouldn't refresh entire view
