@@ -1,0 +1,30 @@
+.auth-title {
+  font-size: 300%;
+  font-weight: bold;
+}
+
+.auth-form {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.auth-container {
+  margin-left: 20px
+}
+
+.auth-link {
+  color: black;
+  &:active {
+    color: black;
+  }
+  &:visited {
+    color: black;
+  }
+  &:hover {
+    color: black;
+  }
+}
+
+.guest-signin {
+   margin: 30px auto 30px 0;
+}

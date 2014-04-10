@@ -8,7 +8,6 @@ module ApplicationHelper
   end
 
   def logout_user!
-    fail
     current_user.reset_session_token!
     session[:session_token] = nil
 

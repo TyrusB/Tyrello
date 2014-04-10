@@ -1,13 +1,20 @@
-<h1>Sign In</h1>
-<form action="<%= session_url %>" method="POST">
-	<label for="email">Email</label>
-	<input id="email" type="text" name="user[email]">
-	
-	
-	<label for="password">Password</label>
-	<input id="password" type="password" name="user[password]">
-	
-	<input id="logout" type='submit' value='Login'>
-</form>
+<div class='auth-container'>
 
-<a href="<%= new_user_url %>">New to Tyrello?</a>
+  <h1 class='auth-title'>Sign In</h1>
+
+  <%= button_to "Sign In As Guest", {controller: 'sessions', action: 'create', user: { email: "guest@ty-brooks.com", password: "password"} }, { class: "guest-signin" }  %>
+
+  <form class='auth-form' action="<%= session_url %>" method="POST">
+  	<label for="email">Email</label>
+  	<input id="email" type="text" name="user[email]">
+  	
+  	
+  	<label for="password">Password</label>
+  	<input id="password" type="password" name="user[password]">
+  	
+  	<input id="logout" type='submit' value='Login'>
+  </form>
+
+  <a href="<%= new_user_url %>" class='auth-link'>New to Tyrello?</a>
+
+</div>
