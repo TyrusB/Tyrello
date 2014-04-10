@@ -1,9 +1,13 @@
 window.Tyrello.Collections.BoardMembers = Backbone.Collection.extend({
   model: Tyrello.Models.Member,
 
-  url: "/users",
 
-  intitialize: function(members, options) {
-    this.board = options.board
+  initialize: function(options) {
+    this.board = options.board;
+  },
+
+  url: function() {
+    "/boards/" + this.board.id + "/users"
   }
-})
+
+});

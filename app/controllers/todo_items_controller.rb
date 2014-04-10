@@ -35,6 +35,6 @@ class TodoItemsController < ApplicationController
   private
 
   def todo_item_params
-    params.require(:todo_item).permit(:title, :card_id, :done)
+    params.require(:todo).permit(:title, :done)
   end
 end

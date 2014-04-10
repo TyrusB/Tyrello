@@ -1,7 +1,14 @@
 class CardsController < ApplicationController
 
+  def index
+    @cards = Card.where("list.id = ?", params[:list_id])
+
+    render json: @cards
+  end
+
   def create
-    @card = Card.new(card_params)
+    @list = List.find(params[:list_id])
+    @card = @list.cards.build(card_params)
 
     if @card.save
       render json: @card
@@ -14,6 +21,7 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     @card.update_attributes(card_params)
 
+    #add users to cards here
     if params[:newUserEmail]
       email = params[:newUserEmail]
       new_user = User.find_by_email(email)
@@ -30,16 +38,12 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find(params[:id])
     @card.destroy
-    render json: nil
-  end
-
-  def index
-    @cards = Card.where("list.id = ?", params[:list_id])
-    render json: @cards
+    render json: @card
   end
 
   def show
     @card = Card.find(params[:id])
+
     @todos = @card.todo_items
     @users = @card.users
 

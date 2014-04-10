@@ -26,7 +26,6 @@ window.Tyrello.Views.CardModalView = Backbone.View.extend({
 
     if ($container.children().length == 0) {
       var newTodoForm = new Tyrello.Views.TodoNewView({
-        card_id: this.model.id,
         collection: this.model.todos(),
         parent: this
       });

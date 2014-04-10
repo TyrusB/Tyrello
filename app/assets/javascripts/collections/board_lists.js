@@ -2,7 +2,7 @@ window.Tyrello.Collections.BoardLists = Backbone.Collection.extend({
   model: Tyrello.Models.List,
 
   url: function() {
-    return this.board.url() + "/lists";
+    return "/boards/" + this.board.id + "/lists";
   },
 
   initialize: function(models, options) {

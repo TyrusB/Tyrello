@@ -1,8 +1,10 @@
 window.Tyrello.Models.Card = Backbone.Model.extend({
-  urlRoot: "/cards",
-
-  initialize: function(options) {
-    // this.list = options.list
+  urlRoot: function() {
+    if ( this.isNew() ) {
+      return _.result(this.collection, 'url');
+    } else {
+      return "/cards";
+    }
   },
 
   list: function () {

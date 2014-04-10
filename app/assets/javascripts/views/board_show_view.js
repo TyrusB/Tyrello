@@ -45,7 +45,7 @@ window.Tyrello.Views.BoardShowView = Backbone.CompositeView.extend({
     })
 
     this.$('#modal-container').html(modalView.render().$el);
-    $('#card-modal').modal('show');
+    this.$('#card-modal').modal('show');
 
   },
 

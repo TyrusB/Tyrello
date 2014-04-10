@@ -1,5 +1,4 @@
 window.Tyrello.Models.Board = Backbone.Model.extend({
-  urlRoot: "/boards",
 
   lists: function() {
     if (!this._lists) {
@@ -25,7 +24,9 @@ window.Tyrello.Models.Board = Backbone.Model.extend({
     if (jsonResp.lists) {
       this.lists().set(jsonResp.lists, {parse: true});
       delete jsonResp.lists;
+    }
 
+    if (jsonResp.members) {
       this.members().set(jsonResp.members);
       delete jsonResp.members;
     }

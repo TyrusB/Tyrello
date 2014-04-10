@@ -11,7 +11,6 @@ window.Tyrello.Views.TodoNewView = Backbone.View.extend({
   },
 
   initialize: function(options) {
-    this.card_id = options.card_id;
     this.parent = options.parent;
   },
 
@@ -27,10 +26,10 @@ window.Tyrello.Views.TodoNewView = Backbone.View.extend({
 
     var title = $('#todo-name').val();
 
+
     var todo = new Tyrello.Models.Todo({
       title: title
     });
-
     todo.collection = this.collection
 
     todo.save({},{

@@ -87,7 +87,6 @@ window.Tyrello.Views.ListItemView = Backbone.CompositeView.extend({
 
     var newListId = $card.parent().data('list-id');
 
-
     var newRank = this._calculateRank(nextRank, prevRank);
 
     var card = this.model.cards().get(cardId)
@@ -102,7 +101,6 @@ window.Tyrello.Views.ListItemView = Backbone.CompositeView.extend({
       success: function() {
         $card.data('rank', newRank);
         $card.data('list-id', newListId);
-
         oldList.cards().remove(card);
         var newList = oldList.collection.get(newListId);
         newList.cards().add(card, {silent: true});

@@ -26,15 +26,21 @@ window.Tyrello.Views.CardNewView = Backbone.View.extend({
 
     var title = $('#card-title-' + this.collection.list.get('id')).val();
 
+<<<<<<< HEAD
     var card = new Tyrello.Models.Card({
       title: title,
       list_id: this.collection.list.id
+=======
+    var card = new Trellino.Models.Card({
+      title: title
+>>>>>>> master
     });
     card.collection = this.collection
     // need to figure out how to set association data
     card.save({rank: this.collection.length + 1},{
       success: function() {
         view.collection.add(card);
+        view.$el[0].reset();
         //make this form dissapear...
         view.parent.newCardToggle();
       }
@@ -42,6 +48,7 @@ window.Tyrello.Views.CardNewView = Backbone.View.extend({
   },
 
   cancel: function() {
+    this.$el[0].reset();
     this.parent.newCardToggle();
   }})
 

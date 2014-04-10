@@ -27,8 +27,6 @@ window.Tyrello.Views.ListNewView = Backbone.View.extend({
     var list = new Tyrello.Models.List({
       //figure out a better way than setting both board and board id
       title: title,
-      board_id: this.collection.board.get('id'),
-      board: this.collection.board,
       rank: "0.0"
     });
     list.collection = this.collection

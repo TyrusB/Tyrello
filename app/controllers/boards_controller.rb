@@ -2,15 +2,6 @@ class BoardsController < ApplicationController
   before_filter :require_login!
 
   def index
-    # @boards = Board.includes(:lists, :cards).for_member(current_user)
-#
-#     @lists = []
-#     @boards.each { |board| @lists << board.lists }
-#
-#     @cards = []
-#     @boards.each { |board| @cards << board.cards }
-#     @myID = current_user.id
-
     @boards = Board.for_member(current_user)
 
     render "boards/index"

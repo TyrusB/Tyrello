@@ -2,6 +2,7 @@ window.Tyrello.Views.BoardNewView = Backbone.View.extend({
   template: JST['boards/new'],
 
   initialize: function(options) {
+    // Set by parent view: collection- points to routers collection of boards (bootstrapped from app init)
     this.indexView = options.indexView;
   },
 

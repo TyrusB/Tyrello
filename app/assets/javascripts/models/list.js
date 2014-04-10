@@ -1,8 +1,11 @@
 window.Tyrello.Models.List = Backbone.Model.extend({
-  // Need to set a url based on board?
-  // how to store that?
-  initialize: function(options) {
-    this.board = options.board
+
+  urlRoot: function() {
+    if ( this.isNew() ) {
+      return _.result(this.collection, 'url');
+    } else {
+      return "/lists";
+    }
   },
 
   cards: function() {
@@ -25,3 +28,14 @@ window.Tyrello.Models.List = Backbone.Model.extend({
   }
 
 })
+
+
+// Reference of Backbone's built in url function
+// url: function() {
+//       var base =
+//         _.result(this, 'urlRoot') ||
+//         _.result(this.collection, 'url') ||
+//         urlError();
+//       if (this.isNew()) return base;
+//       return base.replace(/([^\/])$/, '$1/') + encodeURIComponent(this.id);
+//     },
