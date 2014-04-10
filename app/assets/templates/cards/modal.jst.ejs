@@ -9,6 +9,7 @@
            <%= card.escape("description") %>
          <% } else { %>
             <div id='no-description'>No description</div>
+            <div id='new-description' hidden><form class='description-form'><input type='text' class='description-input' name='description'></form></div>
          <% } %>
        </div>
 
@@ -16,7 +17,7 @@
          Todo Items
          <ul id='todo-holder'>
            <% card.todos().each( function(todo) { %>
-             <li><%= todo.title %> <input type='checkbox'></li>
+             <li><%= todo.escape('title') %> <input type='checkbox'></li>
            <% }) %>
              <li><button id='add-todo-button'>New Todo</button><div id='add-todo-container'></div></li>
          </ul>
@@ -27,7 +28,7 @@
          Assigned Users
          <ul id='users-holder'>
            <% card.get('users').forEach( function(user) { %>
-             <li><%= user.email %> <input type='checkbox'></li>
+             <li><%= user.escape("email") %> <input type='checkbox'></li>
            <% }) %>
             <li><button id='add-user-button'>Assign a User</button><div id='add-user-container'></div></li>
          </ul>
@@ -36,3 +37,25 @@
     </div>
   </div>
 </div>
+
+<script>
+$('#no-description').hover(
+  function() {
+    $(this).text("Click to add");
+    $(this).on("click", function() {
+      $(this).toggle();
+      $('#new-description').toggle();
+      $('.description-input').focus().blur(function() {
+        $('#no-description').toggle();
+        $('#new-description').toggle();
+        $(this).off('blur');
+      });
+    });
+  },
+  function() {
+    $(this).text("No description");
+    $(this).off('click');
+  }
+)
+
+</script>

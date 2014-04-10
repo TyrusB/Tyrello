@@ -107,22 +107,24 @@ window.Tyrello.Views.BoardShowView = Backbone.CompositeView.extend({
   },
 
   updateOrder: function(event, ui) {
-    var $list = $(ui.item);
-    var listId = $list.data('id');
+    if ($(ui.item).hasClass("list") ){
+      var $list = $(ui.item);
+      var listId = $list.data('id');
 
-    var prevRank = $list.prev().data('rank');
-    var nextRank = $list.next().data('rank');
+      var prevRank = $list.prev().data('rank');
+      var nextRank = $list.next().data('rank');
 
-    var newRank = this._calculateRank(nextRank, prevRank);
+      var newRank = this._calculateRank(nextRank, prevRank);
 
-    var list = this.model.lists().get(listId)
+      var list = this.model.lists().get(listId)
 
-    list.save({ "list": { "rank": newRank } }, {
-      patch: true,
-      success: function(model) {
-        $list.data('rank', newRank);
-      }
-    })
+      list.save({ "rank": newRank }, {
+        patch: true,
+        success: function(model) {
+          $list.data('rank', newRank);
+        }
+      })
+    }
   },
 
   _calculateRank: function(next, prev) {

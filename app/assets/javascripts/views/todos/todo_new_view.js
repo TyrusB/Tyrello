@@ -3,6 +3,8 @@ window.Tyrello.Views.TodoNewView = Backbone.View.extend({
 
   tagName: "form",
 
+  className: "new-todo-form",
+
   events: {
     "click button#new-todo-submit":"submit",
     "click button#new-todo-cancel":"cancel"
@@ -23,11 +25,10 @@ window.Tyrello.Views.TodoNewView = Backbone.View.extend({
   submit: function() {
     var view = this;
 
-    var name = $('#todo-name').val();
-    debugger
+    var title = $('#todo-name').val();
+
     var todo = new Tyrello.Models.Todo({
-      name: name,
-      card_id: this.card_id
+      title: title
     });
 
     todo.collection = this.collection
@@ -37,7 +38,7 @@ window.Tyrello.Views.TodoNewView = Backbone.View.extend({
         view.collection.add(todo);
         //make this form dissapear...
         view.parent.newTodoToggle();
-        this.$('form')[0].reset();
+        $('.new-todo-form')[0].reset();
       }
     });
   },
@@ -46,6 +47,6 @@ window.Tyrello.Views.TodoNewView = Backbone.View.extend({
     //this.collection.trigger("add");
     // try to avoid if possible
     // call event on collection
-    this.parent.newListToggle();
+    this.parent.newTodoToggle();
   }
 })

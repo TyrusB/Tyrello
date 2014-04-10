@@ -1,9 +1,12 @@
 class TodoItemsController < ApplicationController
+  # Two fixes to strong params root problem: wrap_parameters here, or override toJSON in the BB model
+  # Rails automatically wraps params if they're the same name as the controller's model
+  wrap_parameters :todo_item
 
   def create
-    # @card = Card.find(params[:card_id])
-#     @item = @card.todo_items.build(todo_item_params)
-    @item = TodoItem.new(todo_item_params)
+    @card = Card.find(params[:card_id])
+    @item = @card.todo_items.build(todo_item_params)
+
     if @item.save
       render json: @item
     else
@@ -30,6 +33,7 @@ class TodoItemsController < ApplicationController
 
 
   private
+
   def todo_item_params
     params.require(:todo_item).permit(:title, :card_id, :done)
   end

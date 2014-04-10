@@ -2,7 +2,8 @@ window.Tyrello.Views.CardModalView = Backbone.View.extend({
   template: JST["cards/modal"],
 
   events: {
-    "click #add-todo-button":"newTodoToggle"
+    "click #add-todo-button":"newTodoToggle",
+    "submit .description-form":"saveDescription"
   },
 
   render: function() {
@@ -16,7 +17,8 @@ window.Tyrello.Views.CardModalView = Backbone.View.extend({
   },
 
   initialize: function() {
-    this.listenTo(this.model, 'sync', this.render)
+    // this.listenTo(this.model, 'sync', this.render)
+    this.listenTo(this.model.todos(), 'add', this.addTodo)
   },
 
   newTodoToggle: function() {
@@ -38,4 +40,23 @@ window.Tyrello.Views.CardModalView = Backbone.View.extend({
       $('#add-todo-button').toggle();
     }
   },
+
+  addTodo: function(todo) {
+    var $todo = $('<li>' + todo.escape('title') + " <input type='checkbox'></li>");
+
+    $($todo).insertBefore( $(this.$('#add-todo-button')) );
+  },
+
+  saveDescription: function(event) {
+    event.preventDefault();
+    view = this;
+    var description = this.$('.description-form').serializeJSON();
+
+    this.model.save(description, {
+      patch: true,
+      success: function() {
+        this.$('#description-holder').html(view.model.escape('description'));
+      }
+    })
+  }
 })

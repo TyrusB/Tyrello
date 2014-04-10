@@ -1,7 +1,7 @@
 window.Tyrello.Views.ListItemView = Backbone.CompositeView.extend({
   template: JST["lists/show"],
 
-  className: "myList",
+  className: "list myList",
 
   tagName: "div",
 
