@@ -113,7 +113,7 @@ window.Tyrello.Views.ListItemView = Backbone.CompositeView.extend({
       if (!prev) {
         return 1
       } else {
-        return (prev + 1);
+        return (prev + 0.5);
       }
     } else if (!prev) {
       return (next / 2);
