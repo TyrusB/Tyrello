@@ -20,3 +20,10 @@
 .new-card-button {
   margin: 3px auto;
 }
+
+
+// Need to set a minimum height so we're able to drag to an empty list
+.sortable-cards {
+  min-height: 30px;
+}
+
