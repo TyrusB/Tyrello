@@ -17,7 +17,7 @@
 //= require backbone
 //= require bootstrap
 //= require serializeJSON
-//= require trellino
+//= require tyrello
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

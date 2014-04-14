@@ -21,14 +21,13 @@ body {
 }
 
 .placeholder-style {
-  background-color: grey;
+  background-color: dimgrey;
+  z-index: 9999;
   height: 30px;
   width: 175px;
   list-style-type: none;
   margin: 3px auto;
 }
-
-
 
 
 
